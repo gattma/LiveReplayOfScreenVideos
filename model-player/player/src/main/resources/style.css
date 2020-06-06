@@ -1,0 +1,18 @@
+.custom-white-label{
+    -fx-text-fill: white;
+    -fx-font-size:12pt;
+}
+
+.custom-white-title-label{
+    -fx-text-fill: white;
+    -fx-font-size:14pt;
+    -fx-font-weight:bold;
+}
+
+.card-unpadded {
+    -fx-background-color: rgb(255.0, 255.0, 255.0);
+    -fx-background-radius: 4.0;
+    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,
+    1.5);
+    -fx-padding: 0 0 0 0;
+}
