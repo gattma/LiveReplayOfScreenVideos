@@ -1,0 +1,9 @@
+PyQt5
+numpy
+imutils
+opencv-python-headless
+jinja2
+tensorflow
+scikit-image
+scikit-learn
+zipfile36

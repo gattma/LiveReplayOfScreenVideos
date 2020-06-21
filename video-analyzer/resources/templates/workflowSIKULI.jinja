@@ -1,0 +1,7 @@
+{% for action in actions -%}
+    {% if action.action == 'delay' %}
+wait({{action.value}})
+    {% elif action.action == 'click' %}
+click({{action.value}})
+    {% endif %}
+{% endfor -%}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <!--https://fezvrasta.github.io/bootstrap-material-design/docs/4.0/bootstrap-components/card/#card-styles-->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <title>Workflow</title>
+
+    <style>
+        .actionIMG {
+            position: relative;
+            width: 40px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Workflow</h1>
+    <div id="accordion">
+        {% for action in actions -%}
+        <div class="card text-white bg-secondary mb-3" style="max-width: 38rem">
+          <div class="card-header" style="padding: 0;cursor: pointer" id="headingOne" data-toggle="collapse" data-target="#{{action.value}}" aria-expanded="true" aria-controls="collapseOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link text-white font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  {% if action.action == 'delay' %}
+                    WAIT({{action.value}}ms)
+                  {% else %}
+                    CLICK(<img class="actionIMG" src="{{action.value}}"  alt="{{action.value}}"/>)
+                  {% endif %}
+              </button>
+            </h5>
+          </div>
+
+          <div id="{{action.value}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                {% if action.action == 'click' %}
+                <img style="float: left;margin-bottom: 20px;margin-right: 20px;" src="{{action.value}}" alt="Card image cap">
+                {% endif %}
+                <p class="card-text">
+                {% if action.action == 'delay' %}
+                    <h4>Wait for {{action.value}}ms</h4>
+                    <br>TYPE: <b>Delay</b>
+                {% else %}
+                    <h4>Image name: {{action.value}}</h4><br>
+                    TYPE: <b>Click</b>
+                {% endif %}
+                </p>
+            </div>
+          </div>
+        </div>
+        {% endfor -%}
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titel</title>
+
+    <style>
+        body {
+            background: lightblue;
+        }
+
+        .clickDIV {
+            margin-bottom: 40px
+        }
+        .actionIMG {
+            position: relative;
+            top: 50%;
+            transform: translateY(50%);
+            width: 50px;
+        }
+        .delayDIV {
+            margin-bottom: 10px;
+        }
+    </style>
+
+  </head>
+  <body>
+      <div style="margin: 50px;">
+      {% for action in actions -%}
+        {% if action.action == 'delay' %}
+          <div class="delayDIV">wait({{action.value}})</div>
+        {% else %}
+          <div class="{{action.action}}DIV">{{action.action}}(<img class="actionIMG" src="{{action.value}}" />)</div>
+        {% endif %}
+      {% endfor -%}
+      </div>
+  </body>
+</html>

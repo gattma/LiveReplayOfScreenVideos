@@ -1,0 +1,7 @@
+<workflow>
+    <interaction>
+    {% for action in actions -%}
+        <action type="{{action.action}}" {{action.attributes}}>{{action.value}}</action>
+    {% endfor -%}
+    </interaction>
+</workflow>
